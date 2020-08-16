@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<title>Live Streaming Example</title>
+</head>
+
+<body>
+    
+  <script type="text/javascript" src="audio/audio-worker-shim.min.js"></script>
+  <script type="text/javascript" src="audio/audio-stream-player.js"></script>
+  
+  <script type="text/javascript" src="video/YUVCanvas.js"></script>
+  <script type="text/javascript" src="video/Decoder.js"></script>
+  <script type="text/javascript" src="video/Player.js"></script>
+  <script type="text/javascript" src="video/video-stream-player.js"></script>
+  
+  <script type="text/javascript" src="stream-player.js"></script>
+  
+  <script type="text/javascript">
+  
+	var mediaServerIp = "127.0.0.1";
+	
+	var needWSS = false;
+	var tryToUsePCM = false;
+	var oneSampleRateOneChannel = true;
+	var mixChannelName = "desktop";
+	
+	var isOnMobile = navigator.userAgent.indexOf('Mobile') >= 0
+							|| navigator.userAgent.indexOf('Android') >= 0;
+	
+	var isChromeOnAndroid = navigator.userAgent.indexOf('Chrome') >= 0
+							&& navigator.userAgent.indexOf('Android') >= 0;
+							
+	var isIOS = isOnMobile && (navigator.userAgent.indexOf('iPad') >= 0 
+									|| navigator.userAgent.indexOf('iPhone') >= 0);
+	
+	if (isOnMobile) mixChannelName = "mobile";
+	
+	if (tryToUsePCM) oneSampleRateOneChannel = true;
+	
+	// init web audio
+	if (!isChromeOnAndroid) AudioWorkerShim.polyfill();
+	window.AudioContext = window.AudioContext       ||
+						  window.webkitAudioContext ||
+						  window.mozAudioContext    ||
+						  window.oAudioContext      ||
+						  window.msAudioContext;
+						  
+	var audioCtx = new AudioContext();
+	if (oneSampleRateOneChannel) {
+		if (audioCtx.sampleRate == 44100 || audioCtx.sampleRate == 48000) {
+			mixChannelName = mixChannelName + "-" + audioCtx.sampleRate;
+		}
+	}
+	
+	var afilter = null;
+	if (tryToUsePCM) {
+		afilter = audioCtx.createBiquadFilter();
+		//afilter.Q.value = 1.00;
+		//afilter.frequency.value = 1000;
+		afilter.Q.value = 8.30;
+        afilter.frequency.value = 355;
+        afilter.gain.value = 3.0;
+		afilter.type = 'bandpass';
+	}
+	
+	// audio options
+	var aoptions = { audioContext: audioCtx, useWorker: true,
+					 workerFile: "audio/audio-stream-process.js"
+				   };
+	if (isChromeOnAndroid) {
+		aoptions.useWorker = false;
+		aoptions.workerFile = "";
+		aoptions.audioDataBlockSize = 8192;
+	}
+	
+	// video options
+	var voptions = { webgl: true, useWorker: true,
+					 workerFile : "video/Decoder.js",
+					 size: {width: 640, height: 360}
+				   };
+	
+	// server url	
+	var serverUrl = "ws://" + mediaServerIp + ":9320/" + mixChannelName;
+	if (needWSS) serverUrl = "wss://" + mediaServerIp + ":9321/" + mixChannelName;
+	
+	// stream player
+	var streamPlayer = new SimpleWebSocketStreamPlayer(voptions, aoptions);
+	streamPlayer.onPlay = function() {
+		document.getElementById('msg').innerHTML = 'playing(click here if no sound) - ' + streamPlayer.mediaInfo;
+	}
+	
+	// for recorder server test
+	/*
+	var recorderServerUrl = "http://127.0.0.1:9009";
+	function sendRequest(reqParams) {
+		var httpActionRequest = new XMLHttpRequest();
+		var httpActionUrl = recorderServerUrl;
+		var httpActionParams = "" + reqParams;
+		httpActionRequest.open("POST", httpActionUrl, true);
+		httpActionRequest.setRequestHeader("Content-type", "text/plain");
+		httpActionRequest.onreadystatechange = function() {
+			if (httpActionRequest.readyState == 4) {
+				var httpRequestResultCode = (httpActionRequest.status + '')[0]; // make sure we get a successful response back.
+				if (httpRequestResultCode !== '0' && httpRequestResultCode !== '2' && httpRequestResultCode !== '3') {
+					console.error("Failed to get response from server - " + recorderServerUrl);
+				}
+			}
+		}
+		httpActionRequest.onload = function() {
+			console.log("Sent request to server - " + recorderServerUrl);
+		}
+		httpActionRequest.onerror = function() {
+			console.error("Failed to send request to server - " + recorderServerUrl);
+		}
+		httpActionRequest.send(httpActionParams);
+	}
+	function sendStartRecordRequest(channelName, fileName) {
+		var req = {
+			command: "record",
+			channel: channelName ? channelName : mixChannelName,
+			filename: fileName ? fileName : ""
+		};
+		sendRequest(JSON.stringify(req));
+	}
+	function sendStopRecordRequest(channelName) {
+		var req = {
+			command: "stop",
+			channel: channelName ? channelName : mixChannelName
+		};
+		sendRequest(JSON.stringify(req));
+	}
+	*/
+	
+	// windows events
+	function ios_unlock_sound() {
+		streamPlayer.playDummySound();
+	}
+	
+	window.addEventListener("touchend", ios_unlock_sound, false);
+	window.addEventListener("mousedown", ios_unlock_sound, false);
+	
+	window.onload = function () {
+		streamPlayer.audioFilter = afilter;
+		streamPlayer.videoContainer = document.getElementById('videoCanvas');
+		streamPlayer.open(serverUrl);
+		
+		setInterval(function() {
+		
+			document.getElementById('speed').innerHTML = 'Video Stream Speed Score: ' + streamPlayer.getVideoStreamSpeedScore();
+			
+			/*
+			if (streamPlayer.videoContainer != null) {
+				document.getElementById('speed').innerHTML += "<br>" + "Video container size: " 
+												+ streamPlayer.videoContainer.style.width + " , " 
+												+ streamPlayer.videoContainer.style.height;
+			}
+			if (streamPlayer.videoContainer != null && streamPlayer.videoContainer.childNodes.length > 0) {
+				document.getElementById('speed').innerHTML += "<br>" + "Video canvas real size: " 
+												+ streamPlayer.videoContainer.childNodes[0].width + "x" 
+												+ streamPlayer.videoContainer.childNodes[0].height;
+				if (streamPlayer.video.player.webgl) {
+					document.getElementById('speed').innerHTML += "<br>" + "Video canvas is WebGL canvas." 
+				} else {
+					document.getElementById('speed').innerHTML += "<br>" + "Video canvas is normal canvas." 
+				}
+			}
+			*/
+												
+		}, 1000);
+	};
+	
+  </script>
+  
+  <center>
+  
+  <div id="videoCanvas"></div>
+  <!-- <div id="videoCanvas" style="width: 800px; height: 450px;"></div> -->
+  
+  <span id="msg" style="position: relative; top: 10px;">Loading...</span>
+  <br/>
+  <p id="speed">Video Stream Speed Score: ?</p>
+  
+  <!--
+  <p>
+   <button type="button" onclick="sendStartRecordRequest()">Start recording</button>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   <button type="button" onclick="sendStopRecordRequest()">Stop recording</button>
+  </p>
+  -->
+  
+  </center>
+	
+</body>
+</html>

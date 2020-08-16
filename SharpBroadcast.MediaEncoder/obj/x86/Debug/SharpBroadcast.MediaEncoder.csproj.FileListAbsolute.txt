@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\bin\Debug\MediaEncoder.exe.config
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\bin\Debug\MediaEncoder.exe
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\bin\Debug\MediaEncoder.pdb
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\bin\Debug\ObjectListView.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.AudioTaskForm.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.MainForm.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.Properties.Resources.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.VideoTaskForm.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\SharpBroadcast.MediaEncoder.csproj.CopyComplete
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\MediaEncoder.exe
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.MediaEncoder\obj\x86\Debug\MediaEncoder.pdb

@@ -1,0 +1,4 @@
+﻿[ERROR][2020-07-26 12:18:45.541] - HTTP context error: Cannot access a disposed object.
+Object name: 'System.Net.HttpListener'.
+[ERROR][2020-07-26 12:18:45.546] - HTTP context error: The I/O operation has been aborted because of either a thread exit or an application request
+[ERROR][2020-07-26 12:18:45.571] - HTTP context error: The I/O operation has been aborted because of either a thread exit or an application request

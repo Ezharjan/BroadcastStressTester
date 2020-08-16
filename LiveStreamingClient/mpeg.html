@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Live Streaming Example (MPEG1)</title>
+<style type="text/css">
+	html, body {
+		background-color: #111;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript" src="jsmpeg.min.js"></script>
+</head>
+
+<body>
+<canvas id="video-canvas"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('video-canvas');
+	var url = 'ws://127.0.0.1:9420/test-mpeg';
+	var player = new JSMpeg.Player(url, {canvas: canvas});
+</script>
+</body>
+</html>

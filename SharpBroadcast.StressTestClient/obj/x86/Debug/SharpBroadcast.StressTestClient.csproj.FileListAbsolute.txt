@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\bin\Debug\StressTestClient.exe.config
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\bin\Debug\StressTestClient.exe
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\bin\Debug\StressTestClient.pdb
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\bin\Debug\ObjectListView.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\bin\Debug\WebSocket4Net.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\SharpBroadcast.StressTestClient.MainForm.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\SharpBroadcast.StressTestClient.Properties.Resources.resources
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\SharpBroadcast.StressTestClient.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\SharpBroadcast.StressTestClient.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\SharpBroadcast.StressTestClient.csproj.CopyComplete
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\StressTestClient.exe
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.StressTestClient\obj\x86\Debug\StressTestClient.pdb

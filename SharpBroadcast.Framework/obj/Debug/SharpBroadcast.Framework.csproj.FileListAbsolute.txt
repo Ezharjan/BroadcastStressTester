@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\bin\Debug\SharpBroadcast.Framework.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\bin\Debug\SharpBroadcast.Framework.pdb
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\bin\Debug\ParallelExtensionsExtras.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\bin\Debug\SharpNetwork.Core.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\bin\Debug\SharpNetwork.SimpleWebSocket.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\obj\Debug\SharpBroadcast.Framework.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\obj\Debug\SharpBroadcast.Framework.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\obj\Debug\SharpBroadcast.Framework.csproj.CopyComplete
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\obj\Debug\SharpBroadcast.Framework.dll
+C:\Users\Administrator\Desktop\temp\sharp-broadcast-master\SharpBroadcast.Framework\obj\Debug\SharpBroadcast.Framework.pdb
